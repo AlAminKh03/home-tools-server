@@ -135,6 +135,13 @@ async function run() {
             res.send({ admin: isAdmin })
         })
 
+
+        app.delete('/orders/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: ObjectId(id) }
+            const result = await orderCollection.deleteOne(filter)
+            res.send(result)
+        })
         // profile update 
     }
     finally {
