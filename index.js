@@ -116,7 +116,7 @@ async function run() {
             res.send({ result, token });
         });
 
-
+        // getting
         app.get('/user', async (req, res) => {
             const query = {}
             const result = await userCollection.find(query).toArray()
