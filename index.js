@@ -56,6 +56,11 @@ async function run() {
             const reviews = await cursor.toArray()
             res.send(reviews)
         })
+        app.put('/reviews', async (req, res) => {
+            const data = req.body
+            const result = await reviewCollection.insertOne(data)
+            res.send(result)
+        })
 
         // single product
 
@@ -142,7 +147,31 @@ async function run() {
             const result = await orderCollection.deleteOne(filter)
             res.send(result)
         })
-        // profile update 
+
+
+        // posting product 
+        app.post('/products', async (req, res) => {
+            const newProduct = req.body
+            const result = await productCollection.insertOne(newProduct)
+            res.send(result)
+        })
+        // product deleted 
+        app.delete("/products/:id", async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await productCollection.deleteOne(query);
+            res.send(result);
+        });
+
+        // getting booking 
+        app.get('/orders/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const booking = await bookingCollection.findOne(query);
+            res.send(booking);
+        })
+
+
     }
     finally {
 
