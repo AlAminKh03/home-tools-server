@@ -42,6 +42,25 @@ async function run() {
         const orderCollection = client.db('home-tools').collection('orders')
         const reviewCollection = client.db('home-tools').collection('reviews')
         const userCollection = client.db('home-tools').collection('users')
+        const projectCollection = client.db('home-tools').collection('projects')
+
+        // projects
+        app.get('/projects', async (req, res) => {
+            const query = {}
+            const cursor = projectCollection.find(query)
+            const projects = await cursor.toArray()
+            res.send(projects)
+        })
+        // single projects 
+
+        app.get('/projects/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log(id)
+            const query = { _id: ObjectId(id) }
+            const result = await projectCollection.findOne(query)
+            res.send(result)
+        })
+
         // Products/
         app.get('/products', async (req, res) => {
             const query = {}
