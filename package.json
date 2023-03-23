@@ -7,6 +7,9 @@
     "mongodb": "^4.6.0",
     "stripe": "^9.5.0"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "name": "assignment-12-server",
   "version": "1.0.0",
   "main": "index.js",
