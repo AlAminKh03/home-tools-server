@@ -67,6 +67,7 @@ async function run() {
       try {
         const cursor = await productCollection.find(query);
         const products = await cursor.toArray();
+        console.log(products);
         res.status(201).send(products);
       } catch (err) {
         console.log(err);
