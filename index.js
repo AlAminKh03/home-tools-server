@@ -64,9 +64,13 @@ async function run() {
     // Products/
     app.get("/products", async (req, res) => {
       const query = {};
-      const cursor = productCollection.find(query);
-      const products = await cursor.toArray();
-      res.send(products);
+      try {
+        const cursor = await productCollection.find(query);
+        const products = await cursor.toArray();
+        res.send(products);
+      } catch (err) {
+        console.log(err);
+      }
     });
 
     // reviews
