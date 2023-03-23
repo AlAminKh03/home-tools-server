@@ -10,7 +10,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://hometools:qnxQXNokSSv02D97@cluster0.vc6xvxr.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.vc6xvxr.mongodb.net/hometools`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -67,7 +67,7 @@ async function run() {
       try {
         const cursor = await productCollection.find(query);
         const products = await cursor.toArray();
-        console.log(products);
+        console.log(object);
         res.status(201).send(products);
       } catch (err) {
         console.log(err);
