@@ -114,15 +114,13 @@ async function run() {
     // get product order
     app.get("/orders/:email", async (req, res) => {
       const email = req.params.email;
-      console.log(email);
-      const decodedEmail = req.decoded.email;
-      console.log(decodedEmail);
-      if (email === decodedEmail) {
+
+      try {
         const query = { email: email };
         const order = await orderCollection.find(query).toArray();
-        return res.send(order);
-      } else {
-        return res.status(403).send({ message: "forbidden access" });
+        res.send(order);
+      } catch (err) {
+        res.status(403).send({ message: "forbidden access" });
       }
     });
 
