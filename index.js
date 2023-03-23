@@ -10,7 +10,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://motor-merchants:TxRBsoOokobT5VjA@cluster0.cfaxtqh.mongodb.net/motor-merchants`;
+const uri = `mongodb+srv://hometools:qnxQXNokSSv02D97@cluster0.vc6xvxr.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -38,11 +38,11 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    const productCollection = client.db("home-tools").collection("products");
-    const orderCollection = client.db("home-tools").collection("orders");
-    const reviewCollection = client.db("home-tools").collection("reviews");
-    const userCollection = client.db("home-tools").collection("users");
-    const projectCollection = client.db("home-tools").collection("projects");
+    const productCollection = client.db("hometools").collection("products");
+    const orderCollection = client.db("hometools").collection("orders");
+    const reviewCollection = client.db("hometools").collection("reviews");
+    const userCollection = client.db("hometools").collection("users");
+    const projectCollection = client.db("hometools").collection("projects");
 
     // projects
     app.get("/projects", async (req, res) => {
