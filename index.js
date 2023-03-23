@@ -10,7 +10,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://home-tools-v2:F1Uxzqe6JhERvhUA@cluster0.vwvvi.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://motor-merchants:TxRBsoOokobT5VjA@cluster0.cfaxtqh.mongodb.net/motor-merchants`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
