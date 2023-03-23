@@ -67,9 +67,10 @@ async function run() {
       try {
         const cursor = await productCollection.find(query);
         const products = await cursor.toArray();
-        res.send(products);
+        res.status(201).send(products);
       } catch (err) {
         console.log(err);
+        res.status(404).send(err);
       }
     });
 
