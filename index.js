@@ -7,7 +7,11 @@ var jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://home-tools-ee461.web.app",
+  })
+);
 app.use(express.json());
 
 const uri = `mongodb+srv://hometools:qnxQXNokSSv02D97@cluster0.vc6xvxr.mongodb.net/?retryWrites=true&w=majority`;
